@@ -2,6 +2,7 @@ use std::fs::File;
 use std::os::raw::c_void;
 use std::process::exit;
 
+use bevy::app::PluginGroupBuilder;
 use bevy::ecs::event::ManualEventReader;
 use bevy::ecs::prelude::*;
 use bevy::prelude::*;
@@ -20,11 +21,40 @@ mod change_window;
 mod converters;
 
 
-
+pub struct CocoaBirdDefaultPlugins;
 pub struct CocoaBirdPlugin;
 #[derive(Default)]
 struct WinitCreateWindowReader(ManualEventReader<CreateWindow>);
 
+
+impl PluginGroup for CocoaBirdDefaultPlugins {
+    fn build(&mut self, group: &mut PluginGroupBuilder) {
+        group.add(bevy::log::LogPlugin::default());
+        group.add(bevy::core::CorePlugin::default());
+        group.add(bevy::time::TimePlugin::default());
+        group.add(bevy::transform::TransformPlugin::default());
+        group.add(bevy::hierarchy::HierarchyPlugin::default());
+        group.add(bevy::diagnostic::DiagnosticsPlugin::default());
+        // group.add(bevy_input::InputPlugin::default());
+        group.add(bevy::window::WindowPlugin::default());
+        group.add(CocoaBirdPlugin);
+        group.add(bevy::asset::AssetPlugin::default());
+        // #[cfg(feature = "debug_asset_server")]
+        // group.add(bevy_asset::debug_asset_server::DebugAssetServerPlugin::default());
+        group.add(bevy::scene::ScenePlugin::default());
+        // group.add(bevy_winit::WinitPlugin::default());
+        group.add(bevy::render::RenderPlugin::default());
+        group.add(bevy::core_pipeline::CorePipelinePlugin::default());
+        group.add(bevy::sprite::SpritePlugin::default());
+        group.add(bevy::text::TextPlugin::default());
+        group.add(bevy::ui::UiPlugin::default());
+        group.add(bevy::pbr::PbrPlugin::default());
+        group.add(bevy::gltf::GltfPlugin::default());
+        group.add(bevy::audio::AudioPlugin::default());
+        // group.add(bevy::gilrs::GilrsPlugin::default());
+        group.add(bevy::animation::AnimationPlugin::default());
+    }
+}
 
 impl Plugin for CocoaBirdPlugin{
     fn build(&self, app: &mut App) {
