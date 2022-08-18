@@ -1,0 +1,26 @@
+[package]
+name = "cocoa-bird"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[test]]
+#cargo test -q main -- --nocapture
+name = "main"
+path = "test/main.rs"
+#run on main thread
+harness = false
+
+[dependencies]
+bevy = "0.8.0"
+cocoa = "0.24.0"
+display-link = "0.2.0"
+core-graphics = "0.22.3"
+raw-window-handle = "0.4.3"
+flame = "0.2.2"
+pprof = { version = "0.10.0", features = ["flamegraph"] }
+
+[dependencies.fruity]
+version = "0.3.0"
+features = ["dispatch"]
