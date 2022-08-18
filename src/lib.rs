@@ -47,7 +47,7 @@ impl PluginGroup for CocoaBirdDefaultPlugins {
         group.add(bevy::core_pipeline::CorePipelinePlugin::default());
         group.add(bevy::sprite::SpritePlugin::default());
         group.add(bevy::text::TextPlugin::default());
-        group.add(bevy::ui::UiPlugin::default());
+        // group.add(bevy::ui::UiPlugin::default());
         group.add(bevy::pbr::PbrPlugin::default());
         group.add(bevy::gltf::GltfPlugin::default());
         group.add(bevy::audio::AudioPlugin::default());
