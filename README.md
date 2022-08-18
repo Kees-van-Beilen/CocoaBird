@@ -8,6 +8,7 @@ run a test using `cargo test -q main -- --nocapture`
 has been done:
 - replaced winit window creation
 - replaced winit event loop
+
 has to be done:
 - fix window events
 - re implement input
